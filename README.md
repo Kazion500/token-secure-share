@@ -3,9 +3,9 @@
 Token Secure Share is a monorepo project that enables users to securely share token secrets by generating one-time links. The project consists of both frontend and backend components.
 
 ## Features
-Generate one-time links: Users can generate unique links that can be used to securely share token secrets. Once the link is accessed, it becomes invalid.
-Secure token sharing: The project ensures that token secrets are shared securely, minimizing the risk of unauthorized access.
-Frontend and backend integration: The frontend and backend components are tightly integrated to provide a seamless user experience.
+- Generate one-time links: Users can generate unique links that can be used to securely share token secrets. Once the link is accessed, it becomes invalid.
+- Secure token sharing: The project ensures that token secrets are shared securely, minimizing the risk of unauthorized access.
+- Frontend and backend integration: The frontend and backend components are tightly integrated to provide a seamless user experience.
 
 ## Project Structure
 The project follows a monorepo structure with the following main components:
