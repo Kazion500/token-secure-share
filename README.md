@@ -36,23 +36,22 @@ npm install
 
 3. Configure the project:
 
-- Frontend: Open the frontend/.env file and provide any necessary configuration variables.
-- Backend: Open the backend/.env file and configure the necessary environment variables, such as database connection details, secret keys, etc.
+   - Frontend: Open the frontend/.env file and provide any necessary configuration variables.
+   - Backend: Open the backend/.env file and configure the necessary environment variables, such as database connection details, secret keys, etc.
 
 4. Start the development servers:
 
-- Frontend: In the frontend/ directory, run:
+   - Frontend: In the frontend/ directory, run:
 
+        ```javascript
+        npm start
+        ```
 
-```javascript
-npm start
-```
+    - Backend: In the backend/ directory, run:
 
-- Backend: In the backend/ directory, run:
-
-```javascript
-npm start
-```
+        ```javascript
+        npm start
+        ```
 
 This will start the frontend and backend servers respectively.
 
