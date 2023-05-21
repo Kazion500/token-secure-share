@@ -1,3 +1,5 @@
+<img width="1511" alt="image" src="https://github.com/Kazion500/token-secure-share/assets/64147010/81fe2e58-e0f6-4079-8129-b3d69b73da29">
+
 # Token Secure Share
 
 Token Secure Share is a monorepo project that enables users to securely share token secrets by generating one-time links. The project consists of both frontend and backend components.
