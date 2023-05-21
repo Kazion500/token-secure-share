@@ -32,8 +32,10 @@ const generateLink = () => {
     <div class="container mx-auto grid lg:grid-cols-2 items-center gap-16">
       <section class="h-full py-5">
         <p>
-          Saving password in plain text is not a good idea. This app will help
-          you to encrypt your password and save it in your local storage.
+          Storing and sharing secret tokens in plain text is insecure and leaves
+          them vulnerable to unauthorized access. However, this web app allows
+          you to generate one-time links, ensuring secure sharing of your secret
+          tokens while maintaining confidentiality.
         </p>
         <TextArea
           :id="'create'"
