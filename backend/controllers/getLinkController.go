@@ -4,7 +4,6 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/kazion500/secure-share/models"
 	"github.com/kazion500/secure-share/types"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 func GetLink(c *fiber.Ctx) error {
@@ -19,18 +18,7 @@ func GetLink(c *fiber.Ctx) error {
 		)
 	}
 
-	linkIdObj, err := primitive.ObjectIDFromHex(linkId)
-
-	if err != nil {
-		return c.Status(400).JSON(
-			types.ResponseType[types.ErrorType]{
-				Success: false,
-				Data:    types.ErrorType{Error: "id is invalid"},
-			},
-		)
-	}
-
-	link, err := models.FindLinkByShortLink(linkIdObj)
+	link, err := models.FindLinkByShortCode(linkId)
 
 	if err != nil {
 		return c.Status(500).JSON(
@@ -41,7 +29,7 @@ func GetLink(c *fiber.Ctx) error {
 		)
 	}
 
-	if link.IsUsed {
+	if link.IsViewed {
 		return c.Status(400).JSON(
 			types.ResponseType[types.ErrorType]{
 				Success: false,
@@ -50,14 +38,16 @@ func GetLink(c *fiber.Ctx) error {
 		)
 	}
 
-	models.UpdateLink(linkIdObj, models.Link{
-		IsUsed: true,
+	models.UpdateLink(link.ID, models.Link{
+		IsViewed: true,
 	})
 
 	return c.JSON(
-		types.ResponseType[models.Link]{
+		types.ResponseType[types.DataType]{
 			Success: true,
-			Data:    link,
+			Data: types.DataType{
+				Content: link.LinkContent,
+			},
 		},
 	)
 

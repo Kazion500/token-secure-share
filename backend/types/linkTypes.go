@@ -1,7 +1,11 @@
 package types
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type DataType struct {
-	Link string `json:"link"`
+	ID      primitive.ObjectID `json:"id" bson:"_id,omitempty"`
+	Content string             `json:"content"`
+	Link    string             `json:"link" bson:"link,omitempty"`
 }
 
 type ErrorType struct {

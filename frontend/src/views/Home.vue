@@ -2,9 +2,29 @@
 import Button from "@/components/Button.vue";
 import TextArea from "@/components/TextArea.vue";
 
+import { useLinkStore } from "@/stores/linkStore";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
-const data = ref("");
+const secret = ref("");
+const linkStore = useLinkStore();
+const route = useRouter();
+
+const generateLink = () => {
+  linkStore
+    .createLink(secret.value)
+    .then((res: any) => {
+      route.push({
+        name: "generate-link",
+        params: {
+          id: res.data.link,
+        },
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 </script>
 
 <template>
@@ -15,19 +35,12 @@ const data = ref("");
           Saving password in plain text is not a good idea. This app will help
           you to encrypt your password and save it in your local storage.
         </p>
-        <TextArea :id="'create'" v-model="data" />
-        <Button
-          :text="'Generate Link'"
-          @click="
-            () =>
-              $router.push({
-                name: 'generate-link',
-                params: {
-                  id: 2,
-                },
-              })
-          "
+        <TextArea
+          :id="'create'"
+          v-model="secret"
+          placeholder="Enter your secret here..."
         />
+        <Button :text="'Generate Link'" @click="generateLink" />
       </section>
 
       <section class="h-full py-5">

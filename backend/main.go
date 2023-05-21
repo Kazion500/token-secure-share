@@ -29,5 +29,5 @@ func main() {
 
 	app := app.CreateApp()
 
-	app.Listen("0.0.0.0:5000")
+	log.Fatal(app.Listen("0.0.0.0:5000"))
 }

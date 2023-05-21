@@ -1,3 +1,5 @@
+import ErrorView from "@/views/ErrorView.vue";
+import GenLink from "@/views/GeneratedLink.vue";
 import Home from "@/views/Home.vue";
 import ViewLink from "@/views/ViewLink.vue";
 
@@ -10,11 +12,16 @@ export const routes = [
   {
     name: "generate-link",
     path: "/generate-link/:id",
-    component: ViewLink,
+    component: GenLink,
   },
   {
     name: "link",
-    path: "/link/:id",
+    path: "/:id",
     component: ViewLink,
+  },
+  {
+    name: "error",
+    path: "/error",
+    component: ErrorView,
   },
 ];

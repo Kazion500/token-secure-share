@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
@@ -31,13 +30,11 @@ func CreateLink(c *fiber.Ctx) error {
 		)
 	}
 
-	shortLink := utils.GenerateShortLink(6)
-
-	// TODO: Create link in database
+	shortCode := utils.GenerateShortCode(6)
 
 	newLink := models.Link{
-		IsUsed:      false,
-		Link:        shortLink,
+		IsViewed:    false,
+		ShortCode:   shortCode,
 		LinkContent: body.Data,
 		CreatedAt:   time.Now(),
 		UpdatedAt:   time.Now(),
@@ -54,12 +51,12 @@ func CreateLink(c *fiber.Ctx) error {
 		)
 	}
 
-	fmt.Println(link)
-
 	return c.JSON(
-		types.ResponseType[models.Link]{
+		types.ResponseType[types.DataType]{
 			Success: true,
-			Data:    link,
+			Data: types.DataType{
+				Link: link.ShortCode,
+			},
 		},
 	)
 }
