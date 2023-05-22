@@ -4,11 +4,11 @@ defineProps({
     type: String,
     required: true,
   },
-  modelValue: {
-    type: String,
-  },
 });
-defineEmits(["update:modelValue"]);
+const modelValue = defineModel<string>({
+  default: "",
+  required: true,
+});
 </script>
 
 <template>

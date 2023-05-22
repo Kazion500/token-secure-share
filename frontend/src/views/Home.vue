@@ -39,7 +39,7 @@ const generateLink = () => {
         </p>
         <TextArea
           :id="'create'"
-          v-model="secret"
+          v-model.title="secret"
           placeholder="Enter your secret here..."
         />
         <Button :text="'Generate Link'" @click="generateLink" />
